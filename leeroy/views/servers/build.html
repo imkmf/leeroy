@@ -1,3 +1,5 @@
+{% extends 'template.html' %}
+{% block content %}
 <h1>{{ build.name }}</h1>
 <h2><a href="..">Return to {{ server.name }}</a></h2>
 <h2>
@@ -10,3 +12,4 @@
 </h2>
 
 <h2>{{ build.healthReport.0.description }}</h2>
+{% endblock %}

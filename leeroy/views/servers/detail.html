@@ -1,3 +1,5 @@
+{% extends 'template.html' %}
+{% block content %}
 <h1>{{ server.name }}</h1>
 <h2><a href="/servers">Return to all servers</a></h2>
 <h2>
@@ -23,3 +25,4 @@
 </li>
 {% endfor %}
 </ul>
+{% endblock %}
