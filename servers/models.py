@@ -19,6 +19,17 @@ class Server(models.Model):
     hsh = get_hexdigest(algo, salt, raw_password)
     self.password = '%s$%s$%s' % (algo, salt, hsh)
 
+  def valid(self):
+    try:
+      url = self.url + "/api/json"
+      if self.private:
+        req = requests.get(url, auth=(self.username, self.password))
+      else:
+        req = requests.get(url)
+      return req.status_code == 200
+    except:
+      return False
+
   def status(self):
     if self.private:
       req = requests.get(self.url, auth=(self.username, self.password))
@@ -28,7 +39,7 @@ class Server(models.Model):
     return 'x-jenkins' in req.headers
 
   def jobs(self):
-    url = self.url + "api/json"
+    url = self.url + "/api/json"
     if self.private:
       req = requests.get(url, auth=(self.username, self.password))
     else:
@@ -37,7 +48,7 @@ class Server(models.Model):
     return req.json()['jobs']
 
   def build(self, build):
-    url = self.url + 'job/' + build + "/api/json"
+    url = self.url + '/job/' + build + "/api/json"
     if self.private:
       req = requests.get(url, auth=(self.username, self.password))
     else:

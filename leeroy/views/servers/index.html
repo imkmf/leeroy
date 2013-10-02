@@ -1,19 +1,40 @@
 {% extends 'template.html' %}
 {% block content %}
-<h1>Servers</h1>
-
-{% if server_list %}
-<ul>
-  {% for server in server_list %}
-  <li>
-    <a href="/servers/{{ server.id }}/">{{ server.name }}</a>
-    {% if server.status %}
-      👍
-    {% else %}
-      👎
-    {% endif %}
-  </li>
-  {% endfor %}
-</ul>
-{% endif %}
+  <h2>Servers</h2>
+  {% if server_list %}
+    <div class="panel panel-default">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Private?</th>
+            <th>Status</th>
+            <th>View Builds</th>
+            <th>Go to Server</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for server in server_list %}
+            <tr>
+              <td>{{ server.name }}</th>
+              <td>{{ server.private }}</th>
+              <td>
+                {% if server.status %}
+                  👍
+                {% else %}
+                  👎
+                {% endif %}
+              </td>
+              <td><a href="/servers/{{ server.id }}/">View Builds</a>
+              <td>
+                <a href="{{ server.url }}">Go to {{ server.name }}</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <h2>No servers found. Add servers in the admin panel.</h2>
+  {% endif %}
 {% endblock %}

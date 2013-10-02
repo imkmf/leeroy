@@ -1,12 +1,14 @@
-{% load bootstrap_toolkit %}
+{% load bootstrap3 %}
 <!DOCTYPE html>
 <html>
-<head>
-<title>Leeroy</title>
-{% bootstrap_stylesheet_tag %}
-{% bootstrap_stylesheet_tag "responsive" %}
-</head>
-<body>
-{% block content %}{% endblock %}
-</body>
+  <head>
+  <title>Leeroy</title>
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  </head>
+  <body>
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+  </body>
 </html>

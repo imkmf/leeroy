@@ -1,28 +1,42 @@
 {% extends 'template.html' %}
 {% block content %}
-<h1>{{ server.name }}</h1>
-<h2><a href="/servers">Return to all servers</a></h2>
-<h2>
-  Status:
-  {% if server.status %}
-    👍
-  {% else %}
-    👎
-  {% endif %}
-</h2>
+  {% if server.valid %}
+    <h2>{{ server.name }}</h2>
+    <h3><a href="/servers"><< Return to all servers</a></h3>
+    <div class="panel panel-default">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Details</th>
+            <th>Status</th>
+            <th>URL</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for job in server.jobs %}
+            <tr>
+              <td>{{ job.name }}</td>
+              <td><a href="{{ job.name }}">View Details</a></td>
+              <td>
+                {% if job.color == 'blue' %}
+                  👍
+                {% else %}
+                  👎
+                {% endif %}
+              </td>
+              <td>
+                <a href="{{ job.url }}">View on {{ server.name }}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
 
-<h3>Current builds:</h3>
-
-<ul>
-{% for job in server.jobs %}
-<li><a href="{{ job.name }}">{{ job.name }}</a>
-  - {% if job.color == 'blue' %}
-    👍
   {% else %}
-    👎
+    <h2>Your server is not responding.
+      Please check your settings in the admin panel.</h2>
+    <h2><a href="/servers">Return to all servers</a></h2>
   {% endif %}
-  - <a href="{{ job.url }}">View on {{ server.name }}</a>
-</li>
-{% endfor %}
-</ul>
 {% endblock %}
