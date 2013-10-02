@@ -15,7 +15,7 @@ I like using [virtualenvwrapper][venvw] (and, of course, [virtualenv][venv]).
 ```
 mkvirtualenv leeroy
 workon leeroy
-pip install -r requirements
+pip install -r requirements.txt
 ```
 
 Heyo! We have lift-off. Let's get this party started.
