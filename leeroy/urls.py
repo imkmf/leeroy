@@ -5,7 +5,7 @@ from servers import urls
 admin.autodiscover()
 
 urlpatterns = patterns('',
-  url(r'^$', RedirectView.as_view(url='servers', permanent=False)),
-  url(r'^servers/', include('servers.urls')),
-  url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', RedirectView.as_view(url='servers', permanent=False)),
+    url(r'^servers/', include('servers.urls')),
+    url(r'^admin/', include(admin.site.urls)),
 )
