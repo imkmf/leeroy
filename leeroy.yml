@@ -1,0 +1,15 @@
+# ~/.tmuxinator/leeroy.yml
+
+name: leeroy
+root: ~/source/python/leeroy
+
+pre_window: workon leeroy
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - vim
+        - #
+  - server: python manage.py runserver
+  - shell: python manage.py shell
