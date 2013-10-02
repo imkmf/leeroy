@@ -1,0 +1,25 @@
+<h1>{{ server.name }}</h1>
+<h2><a href="/servers">Return to all servers</a></h2>
+<h2>
+  Status:
+  {% if server.status %}
+    👍
+  {% else %}
+    👎
+  {% endif %}
+</h2>
+
+<h3>Current builds:</h3>
+
+<ul>
+{% for job in server.jobs %}
+<li><a href="{{ job.name }}">{{ job.name }}</a>
+  - {% if job.color == 'blue' %}
+    👍
+  {% else %}
+    👎
+  {% endif %}
+  - <a href="{{ job.url }}">View on {{ server.name }}</a>
+</li>
+{% endfor %}
+</ul>

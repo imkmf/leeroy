@@ -3,7 +3,14 @@
 {% if server_list %}
 <ul>
   {% for server in server_list %}
-  <li>{{ server.name }}</li>
+  <li>
+    <a href="/servers/{{ server.id }}/">{{ server.name }}</a>
+    {% if server.status %}
+      👍
+    {% else %}
+      👎
+    {% endif %}
+  </li>
   {% endfor %}
 </ul>
 {% endif %}
