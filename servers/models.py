@@ -36,7 +36,7 @@ class Server(models.Model):
         else:
             req = requests.get(self.url)
 
-      return 'x-jenkins' in req.headers
+        return 'x-jenkins' in req.headers
 
     def jobs(self):
         url = self.url + "/api/json"
@@ -55,4 +55,3 @@ class Server(models.Model):
             req = requests.get(url)
 
         return req.json()
-

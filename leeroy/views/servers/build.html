@@ -3,7 +3,8 @@
 <h1>{{ build.name }}</h1>
 <h2><a href="..">Return to {{ server.name }}</a></h2>
 <h2>
-  <a href="{{ build.lastSuccessfulBuild.url }}">Last build</a>:
+  <a href="{{ build.lastSuccessfulBuild.url }}">Last build</a>
+   (#{{ build.lastSuccessfulBuild.number }}):
   {% if build.color == 'blue' %}
     👍
   {% else %}
